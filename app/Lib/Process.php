@@ -23,11 +23,10 @@ class Process implements ProcessInterface {
     /**
      * List running processes
      *
-     * @param  string $username Current user name
      * @return array            List of processes
      */
-    public function list(string $username): array {
-        $raw_list = $this->get_raw_list($username);
+    public function list(): array {
+        $raw_list = $this->get_raw_list();
         // $parsed_list = $this->parse_list($raw_list);
 
         return $raw_list;
@@ -46,11 +45,10 @@ class Process implements ProcessInterface {
     /**
      * Retrieve an unparsed list of running processe form command line
      *
-     * @param  string $username Current user name
      * @return array            List of processes
      */
-    private function get_raw_list(string $username): array {
-        $command = "ps -f -u $username 2>&1";
+    private function get_raw_list(): array {
+        $command = "ps -f -u root 2>&1";
         $stdout = "";
         exec($command, $stdout);
 

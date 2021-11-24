@@ -9,10 +9,8 @@ use App\Models\User;
 class ProcessController extends Controller {
 
     protected $processes;
-    protected $users;
 
-    public function __construct(ProcessInterface $processes, User $users) {
-        $this->users = $users;
+    public function __construct(ProcessInterface $processes) {
         $this->processes = $processes;
     }
 
@@ -23,8 +21,7 @@ class ProcessController extends Controller {
      * @return string           JSON String
      */
     public function index(Request $request) {
-        $username = auth()->user()->name;
-        return $this->processes->list($username);
+        return $this->processes->list();
     }
 
     /**
