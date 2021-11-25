@@ -19,7 +19,7 @@ class Directory implements DirectoryInterface {
         if($type) {
             $entries = glob($path . "*", GLOB_ONLYDIR);
         } else {
-            $entries = $dirs = array_values(array_filter(glob($path . "*"), "is_file"));
+            $entries = array_values(array_filter(glob($path . "*"), "is_file"));
         }
 
         return $entries;
